@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const index = require('./routes/index');
 const api   = require('./routes/api/index');
@@ -13,6 +14,9 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// Connect to Mongoose
+mongoose.connect('mongodb://root:4444@fmr-shard-00-00-lm9bo.mongodb.net:27017,fmr-shard-00-01-lm9bo.mongodb.net:27017,fmr-shard-00-02-lm9bo.mongodb.net:27017/test?ssl=true&replicaSet=fmr-shard-0&authSource=admin');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
